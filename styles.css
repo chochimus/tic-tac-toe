@@ -89,3 +89,16 @@ dialog button{
   padding: 0.8rem;
   border-radius: 0.4rem;
 }
+
+@media screen and (min-width: 350px) {
+  dialog {
+    height: 20%;    
+  }
+  .board {
+    width: 300px;
+  }
+  .board button {
+    width: 100px;
+    height: 100px;
+  }
+}
