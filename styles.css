@@ -1,7 +1,90 @@
-.board{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+* {
+  padding: 0;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
-.cell{
-  padding: 1rem;
+body {
+  background-color: rgb(179, 173, 173);
+  height: 100vh;
+  width: 100vw;
+}
+header{
+  display: flex;
+  justify-content: center;
+}
+
+.turn {
+  margin-top: 1rem;
+  font-size: 2.4rem;
+  font-weight: bold;
+  padding: 0rem 1rem;
+  border-radius: 0.4rem;
+  box-shadow: 2px 2px 4px 0px black;
+  background-color: white;
+}
+.board{
+  margin-top: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: auto auto auto;
+  gap: 0;
+  border: 1px solid black;
+  box-shadow: -1px -1px 0px 1px rgba(207, 207, 207, 0.493), 
+  1px 1px 0px 0px black,
+  1px 6px 0px 4px rgb(66, 66, 66);
+  border-radius: 0.2rem;
+  width: 450px;
+  background-color: rgb(99, 99, 99);
+}
+.board button{
+  width: 150px;
+  height: 150px;
+  border: 0.6rem solid rgb(99, 99, 99);
+  background-color: rgb(66, 66, 66);
+  box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.664) inset;
+  border-radius: 0.6rem;
+}
+
+.cell.turn-X:hover:enabled {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='rgba(0, 0, 0, 0.459)'%3E%3Cpath d='M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E ");
+
+}
+
+.cell.turn-O:hover:enabled {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cg fill='rgba(0, 0, 0, 0.459)' transform='translate(42.666667, 42.666667)'%3E%3Cpath d='M213.333333,3.55271368e-14 C331.15408,3.55271368e-14 426.666667,95.5125867 426.666667,213.333333 C426.666667,331.15408 331.15408,426.666667 213.333333,426.666667 C95.5125867,426.666667 3.55271368e-14,331.15408 3.55271368e-14,213.333333 C3.55271368e-14,95.5125867 95.5125867,3.55271368e-14 213.333333,3.55271368e-14 Z M213.333333,106.666667 C154.42296,106.666667 106.666667,154.42296 106.666667,213.333333 C106.666667,272.243707 154.42296,320 213.333333,320 C272.243707,320 320,272.243707 320,213.333333 C320,154.42296 272.243707,106.666667 213.333333,106.666667 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E"); 
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.O svg {
+  width: 80%;
+  height: auto;
+  fill: rgb(177, 30, 30)
+}
+.X svg {
+  width: 100%;
+  height: auto;
+  fill: blue;
+}
+dialog:not([open]){
+  display:none;
+}
+dialog {
+  font-size: 2rem;
+  min-width: 100%;
+  border: none;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  top: 30%;
+  display: grid;
+  justify-items: center;
+  padding: 1rem 0rem;
+}
+dialog button{
+  font-size: 1.8rem;
+  padding: 0.8rem;
 }

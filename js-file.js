@@ -110,6 +110,7 @@ let gameController = function(){
       });
     });
     currentMoves = 0;
+    activePlayer = player[0];
   }
   printNewRound();
 
@@ -139,11 +140,29 @@ let screenController = function(){
 
         const cellButton = document.createElement("button");
         cellButton.classList.add("cell");
+        cellButton.classList.add(`turn-${activePlayer.marker}`);
         cellButton.dataset.column = cindex;
         cellButton.dataset.row = rindex;
-        if(cell.getMarker() !== '') cellButton.classList.add(`${cell.getMarker()}`);
-        if(cell.getMarker() == "X" || cell.getMarker() == "O") {
+
+        //if cell has marker, add corresponding svg
+        if(cell.getMarker() !== '') {
+          cellButton.classList.add(`${cell.getMarker()}`)
           cellButton.disabled = true;
+          const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+          if(cell.getMarker() == "O"){
+            cellButton.classList.add(`O`);
+            svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+            svg.setAttribute("viewBox","0 0 512 512");
+            svg.innerHTML = `<g transform="translate(42.666667, 42.666667)"> <path d="M213.333333,3.55271368e-14 C331.15408,3.55271368e-14 426.666667,95.5125867 426.666667,213.333333 C426.666667,331.15408 331.15408,426.666667 213.333333,426.666667 C95.5125867,426.666667 3.55271368e-14,331.15408 3.55271368e-14,213.333333 C3.55271368e-14,95.5125867 95.5125867,3.55271368e-14 213.333333,3.55271368e-14 Z M213.333333,106.666667 C154.42296,106.666667 106.666667,154.42296 106.666667,213.333333 C106.666667,272.243707 154.42296,320 213.333333,320 C272.243707,320 320,272.243707 320,213.333333 C320,154.42296 272.243707,106.666667 213.333333,106.666667 Z"/></g>`;
+            cellButton.appendChild(svg);
+            
+          } else {
+            cellButton.classList.add(`X`);
+            svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+            svg.setAttribute("viewBox","0 0 24 24");
+            svg.innerHTML = `<g><path d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z"/></g>`;
+            cellButton.appendChild(svg);
+          }
         }
         boardDiv.appendChild(cellButton);
       })
@@ -173,6 +192,7 @@ let screenController = function(){
     
     updateScreen(status);
   }
+
   boardDiv.addEventListener("click", clickHandlerBoard);
 
   updateScreen();
