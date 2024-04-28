@@ -87,4 +87,5 @@ dialog {
 dialog button{
   font-size: 1.8rem;
   padding: 0.8rem;
+  border-radius: 0.4rem;
 }
